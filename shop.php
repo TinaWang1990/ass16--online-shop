@@ -17,24 +17,67 @@ require_once('db.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Tina's Shop</title>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#btn').click(function(){
+          var i=count++;
+
+
+
+        });
+      });
+    </script>
+
   </head>
   <body>
 
-  	<?php 
+    <div class="container"> 
+      <h1 class="text-center text-primary my-5">Welcome to Tina's Shop</h1>
+      
+      <div class="row">
+        <?php 
+          $db=new DBConnection();
+          $result=$db->getAllItemsReturnObj();
+   
+          foreach ($result as $val){
+          
+        ?>
 
-  	$db=new DBConnection();
-  	$result=$db->getAllItemsReturnObj();
+        <div class="col-4">
+          <div class="card" style="width:18rem;">
+            <img class="card-img-top" src="<?php echo $val['image_url'] ?>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title" style="min-height: 5rem">
+                <?php 
+                echo $val['name'];
+                 ?>
+              </h5>
 
-   // print_r($result);
+              <p class="text-right text-primary">
+                <b>
+                  <?php 
+                    echo $val['price'];
+                   ?>
+                </b>
+              </p>
+              <div class="text-right">
+                <button class="btn btn-success">
+                  Purchase
+                </button>
+              </div>
+            </div>
+           </div>
+        </div>
+    <?php 
+       }
+    ?>
+    <div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
+          Total: <span class="TotalPrice">0</span>
+    </div>
+ </div>
+</div>
   	
-    foreach ($result as $val){
-      echo $val['name'];
-      echo '<br>';
-    };
-
-
-  	 ?>
-    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
