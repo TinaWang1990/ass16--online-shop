@@ -46,6 +46,9 @@
                   </b>
                 </p>
                 <div class="text-right">
+
+                  <!-- <button class="btn btn-success" onclick="AddPrice('<?php  echo $val['price'];?>')"> -->
+      <!-- <button class="btn btn-success purchase" data-price="<?php  echo $val['price'];?>"> -->
                   <button class="btn btn-success" >
                     Purchase
                   </button>

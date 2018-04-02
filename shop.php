@@ -30,6 +30,7 @@ require_once('db.php');
         <?php 
           $db=new DBConnection();
           $result=$db->getAllItemsReturnObj();
+
    
           foreach ($result as $val){
           
@@ -37,25 +38,27 @@ require_once('db.php');
 
         <div class="col-4">
           <div class="card" style="width:18rem;">
-            <img class="card-img-top" src="<?php echo $val['image_url'] ?>" alt="Card image cap">
+            <img class="card-img-top" src="<?php echo $val->getImgUrl(); ?>" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title" style="min-height: 5rem">
                 <?php 
-                echo $val['name'];
+                echo $val->getName();
                  ?>
               </h5>
 
               <p class="text-right text-primary">
                 <b>
-                  <?php 
-                    echo $val['price'];
+                  <span class="card-price">
+                    <?php 
+                    echo $val->getPrice();
                    ?>
+                  </span>
+                  
                 </b>
               </p>
               <div class="text-right">
-                <button class="btn btn-success" onclick="AddPrice('<?php 
-                    echo $val['price'];
-                   ?>')">
+                
+                <button class="btn btn-success purchase">
                   Purchase
                 </button>
               </div>
@@ -81,10 +84,30 @@ require_once('db.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-      function AddPrice(price){
-        var current_price=$('.TotalPrice').text();
+      // $('.purchase').click(function(){
+      //     var price =$(this).data('price');
+      //     //this is button
+      //     var current_price=$('.TotalPrice').text();
+      //   $('.TotalPrice').text((parseFloat(current_price)+parseFloat(price)).toFixed(2));
+      //   });
+
+      // $('.purchase').each(function(){
+      //   $(this).click(function(){
+      //     console.log('123');
+      //   })
+      // });
+      // function AddPrice(price){
+      //   var current_price=$('.TotalPrice').text();
+      //   $('.TotalPrice').text((parseFloat(current_price)+parseFloat(price)).toFixed(2));
+      // }
+
+
+       $('.purchase').click(function(){
+          var price=$(this).parents('.card-body').find('.card-price').text();
+          console.log(price);
+          current_price=$('.TotalPrice').text();
         $('.TotalPrice').text((parseFloat(current_price)+parseFloat(price)).toFixed(2));
-      }
+        });
     </script>
 
 

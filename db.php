@@ -36,7 +36,7 @@ class DBConnection{
 			$items[]=$item->arrayAdapter($row);
 			
 		}
-		return $result;
+		return $items;
 
 	}
 	
