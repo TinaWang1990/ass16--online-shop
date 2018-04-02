@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>shopping</title>
+</head>
+<body>
+
+	<ul>
+		{% for item in result %}
+
+			<li>{{ item.name | lower }}</li>
+
+		{% endfor %}
+	</ul>
+</body>
+</html>
