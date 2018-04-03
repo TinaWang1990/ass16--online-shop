@@ -9,7 +9,7 @@ $twig = new Twig_Environment($loader);
 $db=new DBConnection();
 $result=$db->getAllItemsReturnObj();
 
-echo $twig->render('index4.html.twig', array('result' => $result));
+echo $twig->render('index2.html.twig', array('result' => $result));
 
 
 
