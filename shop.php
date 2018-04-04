@@ -25,6 +25,7 @@ require_once('db.php');
 
     <div class="container"> 
       <h1 class="text-center text-primary my-5">Welcome to Tina's Shop</h1>
+      <h2 id="total" class="text-center text-danger my-1"></h2>
       
       <div class="row">
         <?php 
@@ -38,7 +39,7 @@ require_once('db.php');
 
         <div class="col-4">
           <div class="card" style="width:18rem;">
-            <img class="card-img-top" src="<?php echo $val->getImgUrl(); ?>" alt="Card image cap">
+            <img class="card-img-top" src="<?php echo $val->getImgUrl(); ?>" alt="Card image cap"  data-description="<?php echo $val->getDescription(); ?>">
             <div class="card-body">
               <h5 class="card-title" style="min-height: 5rem">
                 <?php 
@@ -70,7 +71,9 @@ require_once('db.php');
     ?>
     <div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
           Total: <span class="TotalPrice">0</span>
+          <button class="Submit btn-warning">Submit</button>
     </div>
+    <div id="des"  style="position:fixed; left:0; top:20%; width: 30vw; background-color: white;  "></div>
  </div>
 </div>
 
@@ -83,7 +86,15 @@ require_once('db.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
     <script type="text/javascript">
+      $('.card-img-top').mouseover(function(){
+        var des=$(this).data('description');
+        $('#des').text(des);
+      });
+      $('.card-img-top').mouseleave(function(){
+        $('#des').text('');
+      });
       // $('.purchase').click(function(){
       //     var price =$(this).data('price');
       //     //this is button
@@ -104,10 +115,17 @@ require_once('db.php');
 
        $('.purchase').click(function(){
           var price=$(this).parents('.card-body').find('.card-price').text();
-          console.log(price);
+          
           current_price=$('.TotalPrice').text();
-        $('.TotalPrice').text((parseFloat(current_price)+parseFloat(price)).toFixed(2));
+          var total=(parseFloat(current_price)+parseFloat(price)).toFixed(2);
+        $('.TotalPrice').text(total);
         });
+
+       $('#Submit').click(function(){
+          
+          $('#total').text("Your total purchase is $"+total+" .")
+       });
+
     </script>
 
 
