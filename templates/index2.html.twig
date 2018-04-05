@@ -17,13 +17,12 @@
       <h1 class="text-center text-primary my-5">Welcome to Jacob's Shop</h1>
       <div class="row">
         
-        <ul>
+        
           {% for item in result %}
             
-              {{item.img_url}}
             <div class="col-4">
             <div class="card" style="width: 18rem; max-width:100%">
-              <img class="card-img-top" src="{{item.image_url}}" alt="card image cap">
+              <img class="card-img-top" src="{{item.imgUrl}}" alt="card image cap">
               <div class="card-body">
                 <h5 class="card-title" style="min-height: 5rem">
                   {{item.name}}
@@ -48,7 +47,7 @@
 
           {% endfor %}
      
-        </ul>
+        
 
           
         <div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">

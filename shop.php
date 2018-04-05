@@ -71,7 +71,7 @@ require_once('db.php');
     ?>
     <div style="background-color: #ddd; color: #222; position:fixed; right: 2rem; bottom: 2rem; padding: 1rem 2.5rem; border-radius: 1rem">
           Total: <span class="TotalPrice">0</span>
-          <button class="Submit btn-warning">Submit</button>
+          <button id="Submit" class="btn-warning">Submit</button>
     </div>
     <div id="des"  style="position:fixed; left:0; top:20%; width: 30vw; background-color: white;  "></div>
  </div>
@@ -114,16 +114,21 @@ require_once('db.php');
 
 
        $('.purchase').click(function(){
-          var price=$(this).parents('.card-body').find('.card-price').text();
+          var price=$('.purchase').parents('.card-body').find('.card-price').text();
           
           current_price=$('.TotalPrice').text();
           var total=(parseFloat(current_price)+parseFloat(price)).toFixed(2);
         $('.TotalPrice').text(total);
+
         });
 
        $('#Submit').click(function(){
+         
+        current_price=$('.TotalPrice').text();
           
-          $('#total').text("Your total purchase is $"+total+" .")
+          $('#total').text("Your total purchase is $"+current_price+".");
+       
+
        });
 
     </script>
