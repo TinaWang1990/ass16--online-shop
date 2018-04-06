@@ -73,7 +73,7 @@ require_once('db.php');
           Total: <span class="TotalPrice">0</span>
           <button id="Submit" class="btn-warning">Submit</button>
     </div>
-    <div id="des"  style="position:fixed; left:0; top:20%; width: 30vw; background-color: white;  "></div>
+    <div id="des"  style="position:fixed; left:0; top:20%; width: 15vw; background-color: white;  "></div>
  </div>
 </div>
 
